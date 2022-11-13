@@ -45,13 +45,17 @@ namespace API
         {
             if (env.IsDevelopment())
             {
+                // if env is development, app uses the developer exception page
                 app.UseDeveloperExceptionPage();
+
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
             }
 
+            // If user comes in via http, user is redirected to https
             app.UseHttpsRedirection();
 
+            // what routes from the browser, weather forecast endpoint, to web forecast controller
             app.UseRouting();
 
             app.UseAuthorization();
